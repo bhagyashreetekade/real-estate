@@ -1,0 +1,19 @@
+.properties-container{
+    gap: 2 rem;
+
+}
+
+.properties-container .search-bar{
+    /* clamp is shortcut of declare your minimum and maximum widht one row */
+    width: clamp(12rem,100%,28rem);
+    border-radius: 30px;
+    border: 1px solid;
+    color: rgba(120, 120, 120, 0.374);
+    flex-wrap: nowrap;
+}
+
+.properties-container .search-bar .button{
+    border-radius: 30px;
+    font-size: 12px;
+    padding: 10px 15px;
+}
