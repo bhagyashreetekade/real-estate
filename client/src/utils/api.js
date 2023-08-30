@@ -67,7 +67,7 @@ export const bookVisit = async(date,propertyId,email,token)=>{
       id:propertyId,date:dayjs(date).format("DD/MM/YYYY")}
     )
   } catch (error) {
-    toast.error("Something went wrong")
+    toast.error("Something went wrong,please try again after some time")
     throw error
   }
 }
