@@ -3,12 +3,14 @@ import { Modal, Button } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import {useMutation} from "react-query";
 import UserDetailContext from "../../context/UserDetailContext";
+import { bookVisit } from "../../utils/api";
 
 const BookingModal = ({ opened, setOpened, email, propertyId }) => {
 
 
   const [value, setValue] = useState(null);
-  const { userDetails :{token}} = useContext(UserDetailContext);
+  const { userDetails :{token},setUserDetails} = useContext(UserDetailContext);
+  console.log(token)
   const { mutate, isLoading } = useMutation({
     mutationFn: () => bookVisit(value, propertyId, email, token),
   });
