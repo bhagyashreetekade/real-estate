@@ -12,14 +12,22 @@ export const sliderSettings = {
       slidesPerView: 1,
     },
     600: {
-      slidesPerView: 2
+      slidesPerView: 2,
     },
     750: {
-      slidesPerView: 3
+      slidesPerView: 3,
     },
     1100: {
       slidesPerView: 4,
     },
   },
+};
 
+export const updateFavourites = (id, favourites) => {
+  //if favourites already include this id then remove it
+  if (favourites.includes(id)) {
+    return favourites.filter((resId) => resId !== id)
+  } else {
+    return [...favourites, id];
+  }
 };
