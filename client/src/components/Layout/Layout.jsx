@@ -6,8 +6,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import UserdetailContext from "../../context/UserDetailContext";
 import { useMutation } from "react-query";
 import { createUser } from "../../utils/api";
+import useFavourites from "../../hooks/useFavourites";
 
 const Layout = () => {
+
+  useFavourites()
   // as we know layout is the first thing that is going to be render on application so here making some authentication related stuff in our layout
 
   const { isAuthenticated, user, getAccessTokenWithPopup } = useAuth0();

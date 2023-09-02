@@ -23,11 +23,17 @@ export const sliderSettings = {
   },
 };
 
-export const updateFavourites = (id, favourites) => {
-  //if favourites already include this id then remove it
-  if (favourites.includes(id)) {
-    return favourites.filter((resId) => resId !== id)
-  } else {
-    return [...favourites, id];
+
+export const updateFavourites = (id,favourites)=>{
+  if(favourites.includes(id))
+  {
+    return favourites.filter((resId)=>resId!==id)
   }
-};
+  else{
+    return [...favourites,id]
+  }
+}
+
+export const checkFavourites = (id,favourites)=>{
+  return favourites?.includes(id)? "#fa3e5f" :"white";
+}
