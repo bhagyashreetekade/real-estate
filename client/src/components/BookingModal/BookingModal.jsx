@@ -47,7 +47,7 @@ const BookingModal = ({ opened, setOpened, email, propertyId }) => {
       title="Select your date of visit"
       centered
     >
-      <div className="flexColCenter">
+      <div className="flexColCenter" style={{gap:"1rem"}}>
         <DatePicker value={value} onChange={setValue} minDate={new Date()} />
         {/* when we are using the react query we try to use muted function when we have to upload some data to other database  */}
         <Button disabled={!value || isLoading} onClick={() => mutate()}>
