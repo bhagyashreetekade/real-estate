@@ -24,16 +24,20 @@ export const sliderSettings = {
 };
 
 
-export const updateFavourites = (id,favourites)=>{
-  if(favourites.includes(id))
-  {
-    return favourites.filter((resId)=>resId!==id)
+export const updateFavourites = (id, favourites) => {
+
+  if (!favourites || favourites.length === 0) {
+    return [id]; // Initialize 'favourites' with 'id' if it's empty or undefined
   }
-  else{
-    return [...favourites,id]
+  
+  if (favourites.includes(id)) {
+    return favourites.filter((resId) => resId !== id);
+  } else {
+    return [...favourites, id];
   }
-}
+};
+
 
 export const checkFavourites = (id,favourites)=>{
   return favourites?.includes(id)? "#fa3e5f" :"white";
-}
+};
