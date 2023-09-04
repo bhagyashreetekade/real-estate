@@ -23,13 +23,11 @@ export const sliderSettings = {
   },
 };
 
-
 export const updateFavourites = (id, favourites) => {
-
   if (!favourites || favourites.length === 0) {
     return [id]; // Initialize 'favourites' with 'id' if it's empty or undefined
   }
-  
+
   if (favourites.includes(id)) {
     return favourites.filter((resId) => resId !== id);
   } else {
@@ -37,7 +35,10 @@ export const updateFavourites = (id, favourites) => {
   }
 };
 
+export const checkFavourites = (id, favourites) => {
+  return favourites?.includes(id) ? "#fa3e5f" : "white";
+};
 
-export const checkFavourites = (id,favourites)=>{
-  return favourites?.includes(id)? "#fa3e5f" :"white";
+export const validateString = (value) => {
+  value?.length < 3 || value === null ? "Must have atleast 3 characters" : null;
 };
