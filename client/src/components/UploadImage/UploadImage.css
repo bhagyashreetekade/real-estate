@@ -1,0 +1,13 @@
+.uploadWrapper{
+    margin-top:3rem;
+    gap:2rem;
+
+}
+
+.uploadZone{
+    width: 80%;
+    height: 25rem;
+    border: 2px dashed gray;
+    cursor: pointer;
+}
+
