@@ -4,6 +4,7 @@ import AddLocation from "../AddLocation/AddLocation";
 import {useAuth0} from "@auth0/auth0-react"
 import BasicDetails from "../BasicDetails/BasicDetails";
 import UploadImage from "../uploadImage/uploadImage";
+import Facilities from "../Facilities/Facilities";
 const AddPropertyModal = ({ opened, setOpened }) => {
   const [active, setActive] = useState(0);
   const {user}=useAuth0()
@@ -51,8 +52,11 @@ const AddPropertyModal = ({ opened, setOpened }) => {
           <Stepper.Step label="Images" description="Upload">
             <UploadImage nextStep={nextStep} prevStep={prevStep}  propertyDetails={propertyDetails} setPropertyDetails={setPropertyDetails}/>
           </Stepper.Step>
-          <Stepper.Step label="Final step" description="Get full access">
+          <Stepper.Step label="Basics" description="Details">
             <BasicDetails nextStep={nextStep} prevStep={prevStep}  propertyDetails={propertyDetails} setPropertyDetails={setPropertyDetails}/>
+          </Stepper.Step>
+          <Stepper.Step label="Basics" description="Details">
+            <Facilities nextStep={nextStep} prevStep={prevStep} setOpened={setOpened} setActiveStep={setActive} propertyDetails={propertyDetails} setPropertyDetails={setPropertyDetails}/>
           </Stepper.Step>
           <Stepper.Completed>
             Completed, click back button to get to previous step
