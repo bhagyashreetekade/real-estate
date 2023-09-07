@@ -6,13 +6,13 @@ import useCountries from "../../hooks/useCountries";
 import Map from "../Map/Map";
 
 
-const AddLocation = ({ propertiesDetails, setPropertyDetails,nextStep }) => {
+const AddLocation = ({ propertyDetails, setPropertyDetails,nextStep }) => {
   const { getAll } = useCountries();
   const form = useForm({
     initialValues: {
-      country: propertiesDetails?.country,
-      city: propertiesDetails?.city,
-      address: propertiesDetails?.address,
+      country: propertyDetails?.country,
+      city: propertyDetails?.city,
+      address: propertyDetails?.address,
     },
     validate: {
       country: (value) => validateString(value),

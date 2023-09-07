@@ -4,10 +4,10 @@ import "./UploadImage.css";
 import { Button, Group } from "@mantine/core";
 
 const UploadImage = (
-  propertyDetails,
+ { propertyDetails,
   setPropertyDetails,
   nextStep,
-  prevStep
+  prevStep,}
 ) => {
   const [imageURL, setImageURL] = useState(propertyDetails.image);
   const cloudinaryRef = useRef();
@@ -24,7 +24,7 @@ const UploadImage = (
       {
         cloudName: "dccu7bkpf",
         uploadPreset: "iuxuxh65",
-        maxFile: 1,
+        maxFiles: 1,
       },
       (err, result) => {
         if (result.event === "success") {
@@ -53,7 +53,7 @@ const UploadImage = (
       )}
 
       <Group position="center" mt={"xl"}>
-        <Button variant="default" onClick={prevStep}>Prev </Button>
+        <Button variant="default" onClick={prevStep}>Back </Button>
         <Button onClick={handleNext} disabled={!imageURL}>Next </Button>
       </Group>
     </div>
