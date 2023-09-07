@@ -1,3 +1,5 @@
+import { Box, Button, Group, NumberInput } from '@mantine/core';
+import { useForm } from '@mantine/form';
 import React from 'react'
 
 const Facilities = ({
@@ -8,41 +10,65 @@ const Facilities = ({
   setOpened,
   setActiveStep
 })  => {
+
+    const form = useForm({
+        initialValues: {
+          bedrooms: propertyDetails?.bedrooms,
+          parkings: propertyDetails?.parkings,
+          bathrooms: propertyDetails?.bathrooms,
+        },
+        validate: {
+          bedrooms: (value) =>(value < 1 ?"Must have atleast one room":null),
+          bathrooms: (value) =>
+            value < 1 ? "Must be atleast one bathroom" : null,
+        },
+      });
+    
+    const { bedrooms, parkings, bathrooms} = form.values;
+
+    const handleSubmit = ()=>{
+        const { hasErrors } = form.validate();
+        if (!hasErrors) {
+          setPropertyDetails((prev) => (
+            {...prev,facilities: { bedrooms,parkings,bathrooms }}));
+            //mutate()
+        }
+    }
+
+
   return (
-    <Box maw="50%" mx="auto" my="md">
+    <Box maw="30%" mx="auto" my="sm">
     <form
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmit();
       }}
     >
-      {/* left side */}
-      {/* inputs */}
 
-      <TextInput
-        placeholder="Property Name"
+      <NumberInput
+        min={0}
         withAsterisk
-        label="Title"
-        {...form.getInputProps("title")}
-      />
-      <Textarea
-        placeholder="Description"
-        withAsterisk
-        label="Description"
-        {...form.getInputProps("description")}
+        label="No of Bedrooms"
+        {...form.getInputProps("bedrooms")}
       />
       <NumberInput
-        placeholder="Description"
+        min={0}
         withAsterisk
-        label="Description"
-        {...form.getInputProps("description")}
+        label="No of parkings"
+        {...form.getInputProps("parkings")}
+      />
+      <NumberInput
+        min={0}
+        withAsterisk
+        label="No of Bathrooms"
+        {...form.getInputProps("bathrooms")}
       />
 
       <Group position="center" mt={"xl"}>
         <Button variant="default" onClick={prevStep}>
-          Back{" "}
+          Back
         </Button>
-        <Button type="submit">Next </Button>
+        <Button type="submit" color='green'>Add Property </Button>
       </Group>
     </form>
   </Box>

@@ -61,16 +61,18 @@ const BasicDetails = ({
           label="Description"
           {...form.getInputProps("description")}
         />
-        <NumberInput
-          placeholder="Description"
+       <NumberInput
           withAsterisk
-          label="Description"
-          {...form.getInputProps("description")}
+          label="Price"
+          placeholder="1000"
+          min={0}
+          {...form.getInputProps("price")}
         />
+
 
         <Group position="center" mt={"xl"}>
           <Button variant="default" onClick={prevStep}>
-            Back{" "}
+            Back
           </Button>
           <Button type="submit">Next </Button>
         </Group>
