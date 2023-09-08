@@ -2,11 +2,11 @@ import React from "react";
 import { useForm } from "@mantine/form";
 import { validateString } from "../../utils/common";
 import { Button, Group, Select, TextInput } from "@mantine/core";
-import useCountries from "../../hooks/useCountries";
+import useCountries from "../../hooks/UseCountries";
 import Map from "../Map/Map";
 
 
-const AddLocation = ({ propertyDetails, setPropertyDetails,nextStep }) => {
+const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
   const { getAll } = useCountries();
   const form = useForm({
     initialValues: {
@@ -14,6 +14,7 @@ const AddLocation = ({ propertyDetails, setPropertyDetails,nextStep }) => {
       city: propertyDetails?.city,
       address: propertyDetails?.address,
     },
+
     validate: {
       country: (value) => validateString(value),
       city: (value) => validateString(value),
@@ -21,32 +22,37 @@ const AddLocation = ({ propertyDetails, setPropertyDetails,nextStep }) => {
     },
   });
 
+
   const { country, city, address } = form.values;
 
-  const handleSubmit=()=>{
-    const {hasErrors}=form.validate()
-    if(!hasErrors){
-        setPropertyDetails((prev)=>({...prev,city,address,country}))
-        nextStep()
+
+  const handleSubmit = () => {
+    const { hasErrors } = form.validate();
+    if (!hasErrors) {
+      setPropertyDetails((prev) => ({ ...prev, city, address, country }))
+      nextStep()
     }
   }
   return (
-    <form onSubmit={(e)=>{
+    <form
+      onSubmit={(e) => {
         e.preventDefault();
         handleSubmit()
-    }}>
+      }}
+    >
       <div
-        className="flexCenter "
+        className="flexCenter"
         style={{
           justifyContent: "space-between",
           gap: "3rem",
           marginTop: "3rem",
+          flexDirection: "row",
         }}
       >
         {/* left side */}
         {/* inputs */}
 
-        <div className="flexColStart">
+        <div className="flexColStart" style={{ flex: 1, gap: "1rem" }}>
           <Select
             w={"100%"}
             withAsterisk
@@ -56,12 +62,14 @@ const AddLocation = ({ propertyDetails, setPropertyDetails,nextStep }) => {
             data={getAll()}
             {...form.getInputProps("country", { type: "input" })}
           />
+
           <TextInput
             w={"100%"}
             withAsterisk
             label="City"
             {...form.getInputProps("city", { type: "input" })}
           />
+
           <TextInput
             w={"100%"}
             withAsterisk
