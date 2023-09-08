@@ -60,7 +60,7 @@ export const getResidency = asyncHandler(async (req, res) => {
 
   try {
     const residency = await prisma.residency.findUnique({
-      where: { id}
+      where: {id}
     })
     res.send(residency)
 
