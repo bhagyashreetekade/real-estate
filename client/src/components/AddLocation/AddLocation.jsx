@@ -2,8 +2,9 @@ import React from "react";
 import { useForm } from "@mantine/form";
 import { validateString } from "../../utils/common";
 import { Button, Group, Select, TextInput } from "@mantine/core";
-import useCountries from "../../hooks/UseCountries";
 import Map from "../Map/Map";
+import useCountries from "../../hooks/useCountries";
+
 
 
 const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
