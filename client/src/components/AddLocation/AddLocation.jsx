@@ -6,7 +6,6 @@ import Map from "../Map/Map";
 import useCountries from "../../hooks/useCountries";
 
 
-
 const AddLocation = ({ propertyDetails, setPropertyDetails, nextStep }) => {
   const { getAll } = useCountries();
   const form = useForm({
